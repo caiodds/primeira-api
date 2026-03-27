@@ -22,7 +22,7 @@ app.post('/produto',(req,res)=>{
     res.status(200).json(novoproduto)
 })
 
-app.put('/produtos/:id',(req,res)=>{
+app.put('/produto/:id',(req,res)=>{
     const {id} = req.params
     const {nome,preco} = req.body
 
