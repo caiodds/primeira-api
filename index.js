@@ -34,6 +34,23 @@ app.put('/produto/:id',(req,res)=>{
     return res.status(404).json({erro:"produto nao encontrado"});
 });
 
+app.delete('/produto/:id', (req, res) => {
+  const id = parseInt(req.params.id);
+
+  const index = produto.findIndex(p => p.id === id);
+
+  if (index === -1) {
+    return res.status(404).json({ erro: 'Produto não encontrado' });
+  }
+
+  const produtoDeletado = produtos.splice(index, 1)[0];
+
+  res.status(200).json({
+    mensagem: 'Produto deletado com sucesso',
+    produto: produtoDeletado,
+  });
+});
+
 app.listen(PORT,() =>{
     console.log('server rodando')
 })
