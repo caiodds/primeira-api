@@ -37,7 +37,7 @@ app.put('/produto/:id',(req,res)=>{
 app.delete('/produto/:id', (req, res) => {
   const id = parseInt(req.params.id);
 
-  const index = produto.findIndex(p => p.id === id);
+  produto = produto.filter(p => p.id !== Number(id));
 
   if (index === -1) {
     return res.status(404).json({ erro: 'Produto não encontrado' });
